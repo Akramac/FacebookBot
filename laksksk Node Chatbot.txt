@@ -1,2 +1,7 @@
 need request to ::: allow us to snd messages to people who send message to the bot
 need body-parser ::: allow us to receive and process messages from users
+
+linkkkkk::
+https://developers.facebook.com/apps/185255362168793/messenger/settings/
+
+Webhooks. Il s'agit de fonctions de rappel HTTP définies par l'utilisateur, qui récupèrent et stockent les données issues d'un évènement, en général externe à votre application. Pour faire simple un Webhook est un messager entre votre chatbot et une source d'information

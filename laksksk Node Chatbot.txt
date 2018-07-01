@@ -1,0 +1,2 @@
+need request to ::: allow us to snd messages to people who send message to the bot
+need body-parser ::: allow us to receive and process messages from users

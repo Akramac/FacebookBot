@@ -56,7 +56,7 @@ app.post('/webhook', (req, res) => {
         if(event.message){ receivedMessage(event);}
         console.log("Webhook received unknown event :",event);
       })
-    });*/
+    });
 
 
     // Gets the body of the webhook event
@@ -66,8 +66,8 @@ app.post('/webhook', (req, res) => {
      // Get the sender PSID
      let sender_psid = webhook_event.sender.id;
      console.log('Sender PSID: ' + sender_psid);
-
-  // Check if the event is a message or postback and
+});
+  / Check if the event is a message or postback and
   // pass the event to the appropriate handler function
   if (webhook_event.message) {
     handleMessage(sender_psid, webhook_event.message);
@@ -79,20 +79,34 @@ app.post('/webhook', (req, res) => {
   //res.status(200).send('EVENT_RECEIVED');
   res.sendStatus(200);
 
-} /*else {
+ /*else {
     // Return a '404 Not Found' if event is not from a page subscription
     res.sendStatus(404);
   }*/
+  // Get the webhook event. entry.messaging is an array, but
+        // will only ever contain one event, so we get index 0
+        let webhook_event = entry.messaging[0];
+        console.log(webhook_event);
 
-});
+      });
+
+      // Return a '200 OK' response to all events
+      res.status(200).send('EVENT_RECEIVED');
+
+    } else {
+      // Return a '404 Not Found' if event is not from a page subscription
+      res.sendStatus(404);
+    }
+
+  });
 
 function receivedMessage(event){
   console.log('Message data :',event.message);
 }
 app.listen(app.get('port'),function(){
   console.log('listenning port');
-})
-}
+});
+
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
   let response;

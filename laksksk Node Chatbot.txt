@@ -1,7 +1,13 @@
-need request to ::: allow us to snd messages to people who send message to the bot
-need body-parser ::: allow us to receive and process messages from users
+need request to ::: allow us to send messages to people who send message to the bot
+need body-parser ::: allow us to receive and process messages from users ++If extended is false, you can not post "nested object" person[name] = 'cw' // Nested Object = { person: { name: cw } }
 
+app.use(bodyParser.json()) // we want to parse json datas.
 linkkkkk::
 https://developers.facebook.com/apps/185255362168793/messenger/settings/
 
-Webhooks. Il s'agit de fonctions de rappel HTTP définies par l'utilisateur, qui récupèrent et stockent les données issues d'un évènement, en général externe à votre application. Pour faire simple un Webhook est un messager entre votre chatbot et une source d'information
+Webhooks. Il s'agit de fonctions de rappel HTTP définies par l'utilisateur, qui récupèrent et stockent les données issues d'un évènement, en général externe à votre application. Pour faire simple un Webhook est un messager entre votre chatbot et une source d'information.
+
+
+La plate-forme Messenger envoie des évènements webhook pour notifier votre bot Messenger des actions qui se produisent dans Messenger. Les évènements sont envoyés au format JSON en tant que demandes POST à votre webhook
+
+Pour ce faire, mettez à jour le bloc body.entry.forEach de votre webhook à l’aide d’une instruction conditionnelle qui vérifie si l’évènement reçu contient une propriété message ou postback.

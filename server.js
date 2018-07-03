@@ -76,13 +76,13 @@ app.post('/webhook', (req, res) => {
   }
 
     // Return a '200 OK' response to all events
-  res.status(200).send('EVENT_RECEIVED');
-  //res.sendStatus(200);
+  //res.status(200).send('EVENT_RECEIVED');
+  res.sendStatus(200);
 
-  } else {
+} /*else {
     // Return a '404 Not Found' if event is not from a page subscription
     res.sendStatus(404);
-  }
+  }*/
 
 });
 
@@ -92,7 +92,7 @@ function receivedMessage(event){
 app.listen(app.get('port'),function(){
   console.log('listenning port');
 })
-
+}
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
   let response;

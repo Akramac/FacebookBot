@@ -3,7 +3,7 @@ var bodyParser=require('body-parser');
 var request=require('request');
 var app=express();
 
-const PAGE_ACCESS_TOKEN = process.env.FB_VERIFY_TOKEN;
+const PAGE_ACCESS_TOKEN = process.env.FB_ACCESS_TOKEN;
 var token=process.env.FB_VERIFY_TOKEN;
 var access=process.env.FB_ACCESS_TOKEN;
 
@@ -21,7 +21,7 @@ app.get('/',function(req,res){
 //For Facebook
 
 app.get('/webhook/',function(req,res){
-    const VERIFY_TOKEN = "EAACofSAOB9kBAFa28mFZB6QdZAmE0aAmxoLb5VW3ThnSAWgtZBbLUHO6l7uQ52WSjJQp5zt7NRm6qz58W1jTjHh7XdxvsvpbTnmILZBAO3zMzxs5ZBJxHZCKPGmMrMZBxkQk06cFoOqkTzcE0T7AXbPvoR0vDMCy37ZAHVkxixBBA7NsW4zoVQ3g";
+    const VERIFY_TOKEN = token;
   if(req.query['hub.verify_token']===token){
     res.send(req.query['hub.challenge']);
   }
@@ -76,8 +76,8 @@ app.post('/webhook', (req, res) => {
   }
 
     // Return a '200 OK' response to all events
-  //res.status(200).send('EVENT_RECEIVED');
-  res.sendStatus(200);
+  res.status(200).send('EVENT_RECEIVED');
+  //res.sendStatus(200);
 
   } else {
     // Return a '404 Not Found' if event is not from a page subscription
